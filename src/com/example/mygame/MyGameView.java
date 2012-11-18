@@ -2,7 +2,9 @@ package com.example.mygame;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -77,6 +79,11 @@ public class MyGameView extends View
 		for(Enemy e : enemies)
 		{
 			e.update(timeStep);
+			if ( e.isColliding(player.getLocationRect() ) )
+			{
+				Intent intent = new Intent(getContext(),ResultsActivity.class);
+				getContext().startActivity(intent);
+			}
 		}
 
 		mPrevTimeMilli = curTimeMillis;

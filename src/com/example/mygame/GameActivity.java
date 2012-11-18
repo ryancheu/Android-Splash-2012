@@ -12,7 +12,7 @@ public class GameActivity extends Activity {
 
 	MyGameView mSurfaceView;
 	
-    @Override
+	 @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
