@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 
 public class GameActivity extends Activity {
 
-	MySurfaceView mSurfaceView;
+	MyGameView mSurfaceView;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class GameActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         
-        mSurfaceView = new MySurfaceView(this);
+        mSurfaceView = new MyGameView(this);
         FrameLayout fl = new FrameLayout(this);  
         fl.setLayoutParams(new LayoutParams());  
         fl.addView(mSurfaceView);        
