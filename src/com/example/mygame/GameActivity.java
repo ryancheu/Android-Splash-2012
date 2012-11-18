@@ -1,17 +1,23 @@
 package com.example.mygame;
 
-import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager.LayoutParams;
+import android.widget.FrameLayout;
 
 public class GameActivity extends Activity {
 
+	MySurfaceView mSurfaceView;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TextView myTextView = new TextView(this);
-        myTextView.setText("Hello World");
-        setContentView(myTextView);
+        
+        mSurfaceView = new MySurfaceView(this);
+        FrameLayout fl = new FrameLayout(this);  
+        fl.setLayoutParams(new LayoutParams());  
+        fl.addView(mSurfaceView);          
+        setContentView(fl);
     }
+    
 }
