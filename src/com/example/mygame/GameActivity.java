@@ -3,6 +3,7 @@ package com.example.mygame;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager.LayoutParams;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 public class GameActivity extends Activity {
@@ -16,7 +17,8 @@ public class GameActivity extends Activity {
         mSurfaceView = new MySurfaceView(this);
         FrameLayout fl = new FrameLayout(this);  
         fl.setLayoutParams(new LayoutParams());  
-        fl.addView(mSurfaceView);          
+        fl.addView(mSurfaceView);
+
         setContentView(fl);
     }
     
