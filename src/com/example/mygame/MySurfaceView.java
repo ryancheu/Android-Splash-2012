@@ -35,14 +35,12 @@ public class MySurfaceView extends View
 		mPaint.setARGB(255,0,255,0);
 		mPlayerBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.player);		
 		mRect = new Rect(RECT_START_X,RECT_START_Y, RECT_START_X + RECT_WIDTH, RECT_START_Y + RECT_HEIGHT);
-		Log.v("Test","surface view created");
 		invalidate();
 	}
 	@Override
 	public void onDraw(Canvas canvas)
 	{
 		super.onDraw(canvas);
-		Log.v("Test","Calling On Draw");
         canvas.drawBitmap(mPlayerBitmap, mTestImageSize, mRect, null);
 		update();
 	}
@@ -63,8 +61,7 @@ public class MySurfaceView extends View
 			mRect.top += yDirection;
 			mRect.bottom += yDirection;
 		}
-		
-		Log.v("TEST APP","x: " + mRect.left);
+
 		invalidate();
 	}
 	public boolean onTouchEvent(MotionEvent event) 
