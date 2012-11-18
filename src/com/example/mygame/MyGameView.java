@@ -1,5 +1,7 @@
 package com.example.mygame;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,7 +34,7 @@ public class MyGameView extends View
 	public float mPointerX = FINGER_UP;
 	public float mPointerY = FINGER_UP;
 	
-	private Enemy enemy0;
+	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	
 	private Player player;
 	
@@ -45,8 +47,10 @@ public class MyGameView extends View
 		mPlayerBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.player);
 		mEnemyBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.enemy);
 		
+		
 		player = new Player(PLAYER_START_X,PLAYER_START_Y,mPlayerBitmap,mPlayerImageSize,mImageDrawSize, 50);
-		enemy0 = new Enemy(10, 10, 100, 100, mEnemyBitmap, mEnemyImageSize,mImageDrawSize, 25);
+		
+		enemies.add(new Enemy(10, 10, 100, 100, mEnemyBitmap, mEnemyImageSize,mImageDrawSize, 25));
 		
 		mPrevTimeMilli = System.currentTimeMillis();
 		invalidate();
@@ -56,7 +60,10 @@ public class MyGameView extends View
 	{
 		super.onDraw(canvas);
 		player.draw(canvas, mPaint);
-        enemy0.draw(canvas, mPaint);
+		for(Enemy e : enemies )
+		{
+	        e.draw(canvas, mPaint);
+		}
 		update();
 	}
 	private void update()
@@ -66,7 +73,11 @@ public class MyGameView extends View
 		float timeStep = (curTimeMillis-mPrevTimeMilli)/1000f; 
 		
 		player.update(mPointerX,mPointerY,timeStep);
-		enemy0.update(timeStep);
+		
+		for(Enemy e : enemies)
+		{
+			e.update(timeStep);
+		}
 
 		mPrevTimeMilli = curTimeMillis;
 		invalidate();				
